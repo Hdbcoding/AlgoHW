@@ -12,7 +12,12 @@ namespace AlgoHW.PrimMSTLib
         public static MSTData FromString(string s)
         {
             var numbers = s.ParseMany(int.Parse);
-            return new MSTData { Node1 = numbers.First(), Node2 = numbers.Skip(1).First(), Cost = numbers.Last() };
+            return new MSTData
+            {
+                Node1 = numbers.First(),
+                Node2 = numbers.Skip(1).First(),
+                Cost = numbers.Last()
+            };
         }
     }
 }
