@@ -1,0 +1,16 @@
+{
+   "version": "0.2.0",
+   "configurations": [
+        {
+            "name": "run mst",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "buildMST",
+            "program": "${workspaceFolder}/AlgoHW.PrimMST/bin/Debug/netcoreapp2.2/AlgoHW.PrimMST.dll",
+            "cwd": "${workspaceFolder}/AlgoHW.PrimMST",
+            "console": "internalConsole",
+            "stopAtEntry": false,
+            "internalConsoleOptions": "openOnSessionStart"
+        }
+    ,]
+}
