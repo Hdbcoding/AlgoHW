@@ -1,4 +1,5 @@
 ﻿using System;
+using AlgoHW.PrimMSTLib;
 
 namespace AlgoHW.PrimMST
 {
@@ -6,7 +7,10 @@ namespace AlgoHW.PrimMST
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            (var info, var data) = MSTLoader.LoadData("prim_data.txt");
+            var graph = MSTLoader.GenerateGraph(data);
+            (var length, var path) = MSTLoader.CalculateMST(graph);
+            Console.WriteLine(length);
         }
     }
 }

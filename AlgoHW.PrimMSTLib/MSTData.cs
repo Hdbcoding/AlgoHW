@@ -5,8 +5,8 @@ namespace AlgoHW.PrimMSTLib
 {
     public class MSTData
     {
-        public int Node1 { get; set; }
-        public int Node2 { get; set; }
+        public int NodeId1 { get; set; }
+        public int NodeId2 { get; set; }
         public int Cost { get; set; }
 
         public static MSTData FromString(string s)
@@ -14,8 +14,8 @@ namespace AlgoHW.PrimMSTLib
             var numbers = s.ParseMany(int.Parse);
             return new MSTData
             {
-                Node1 = numbers.First(),
-                Node2 = numbers.Skip(1).First(),
+                NodeId1 = numbers.First(),
+                NodeId2 = numbers.Skip(1).First(),
                 Cost = numbers.Last()
             };
         }
