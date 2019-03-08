@@ -2,12 +2,22 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "buildMST",
+            "label": "buildPrim",
             "command": "dotnet",
             "type": "process",
             "args": [
                 "build",
                 "${workspaceFolder}/AlgoHW.PrimMST/AlgoHW.PrimMST.csproj"
+            ],
+            "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "buildSchedule",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/AlgoHW.Schedule/AlgoHW.Schedule.csproj"
             ],
             "problemMatcher": "$msCompile"
         }

@@ -1,4 +1,5 @@
 ﻿using System;
+using AlgoHW.ScheduleLib;
 
 namespace AlgoHW.Schedule
 {
@@ -6,7 +7,8 @@ namespace AlgoHW.Schedule
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var times = ScheduleLoader.CalculateWeightedCompletionTime("schedule_data.txt");
+            Console.WriteLine($"poor: {times.poor}, optimal: {times.optimal}");
         }
     }
 }

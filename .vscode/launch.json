@@ -2,12 +2,23 @@
    "version": "0.2.0",
    "configurations": [
         {
-            "name": "run mst",
+            "name": "run prim",
             "type": "coreclr",
             "request": "launch",
-            "preLaunchTask": "buildMST",
+            "preLaunchTask": "buildPrim",
             "program": "${workspaceFolder}/AlgoHW.PrimMST/bin/Debug/netcoreapp2.2/AlgoHW.PrimMST.dll",
             "cwd": "${workspaceFolder}/AlgoHW.PrimMST",
+            "console": "internalConsole",
+            "stopAtEntry": false,
+            "internalConsoleOptions": "openOnSessionStart"
+        },
+        {
+            "name": "run schedule",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "buildSchedule",
+            "program": "${workspaceFolder}/AlgoHW.Schedule/bin/Debug/netcoreapp2.2/AlgoHW.Schedule.dll",
+            "cwd": "${workspaceFolder}/AlgoHW.Schedule",
             "console": "internalConsole",
             "stopAtEntry": false,
             "internalConsoleOptions": "openOnSessionStart"
