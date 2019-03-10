@@ -15,6 +15,7 @@
   <ItemGroup>
     <ProjectReference Include="..\AlgoHW.PrimMSTLib\AlgoHW.PrimMSTLib.csproj" />
     <ProjectReference Include="..\AlgoHW.ScheduleLib\AlgoHW.ScheduleLib.csproj" />
+    <ProjectReference Include="..\AlgoHW.ClusteringLib\AlgoHW.ClusteringLib.csproj" />
   </ItemGroup>
 
   <ItemGroup>
