@@ -22,6 +22,17 @@
             "console": "internalConsole",
             "stopAtEntry": false,
             "internalConsoleOptions": "openOnSessionStart"
+        },
+        {
+            "name": "run clustering",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "buildCluster",
+            "program": "${workspaceFolder}/AlgoHW.Clustering/bin/Debug/netcoreapp2.2/AlgoHW.Clustering.dll",
+            "cwd": "${workspaceFolder}/AlgoHW.Clustering",
+            "console": "internalConsole",
+            "stopAtEntry": false,
+            "internalConsoleOptions": "openOnSessionStart"
         }
     ,]
 }

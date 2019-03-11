@@ -8,6 +8,8 @@ namespace AlgoHW.Tests
     {
         public static IEnumerable<TestCaseData> PrimMSTCases => EnumerateCases("primTestCases");
         public static IEnumerable<TestCaseData> ScheduleCases => EnumerateCases("scheduleTestCases");
+        public static IEnumerable<TestCaseData> ClusterExplicitCases => EnumerateCases("clusterExplicitCases");
+        public static IEnumerable<TestCaseData> ClusterImplicitCases => EnumerateCases("clusterImplicitCases");
 
         private static IEnumerable<TestCaseData> EnumerateCases(string directory)
         {

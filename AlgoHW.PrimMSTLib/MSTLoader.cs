@@ -7,12 +7,12 @@ namespace AlgoHW.PrimMSTLib
 {
     public static class MSTLoader
     {
-        public static (MSTInfo, List<MSTData>) LoadData(string inputFile)
+        public static (MSTInfo, List<EdgeData>) LoadData(string inputFile)
         {
-            return DataReader.ReadData(inputFile, MSTInfo.FromString, MSTData.FromString);
+            return DataReader.ReadData(inputFile, MSTInfo.FromString, EdgeData.FromString);
         }
 
-        public static Dictionary<int, Node> GenerateGraph(List<MSTData> data)
+        public static Dictionary<int, Node> GenerateGraph(List<EdgeData> data)
         {
             var graph = new Dictionary<int, Node>();
             foreach (var value in data)

@@ -20,6 +20,16 @@
                 "${workspaceFolder}/AlgoHW.Schedule/AlgoHW.Schedule.csproj"
             ],
             "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "buildCluster",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/AlgoHW.Clustering/AlgoHW.Clustering.csproj"
+            ],
+            "problemMatcher": "$msCompile"
         }
     ]
 }
