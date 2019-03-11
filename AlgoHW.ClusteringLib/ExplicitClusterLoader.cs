@@ -26,7 +26,7 @@ namespace AlgoHW.ClusteringLib
             return MaxSpacing(graph, edges);
         }
 
-        private static (Dictionary<int, UnionFindNode>, Dictionary<int, List<UnionFindNode>>) 
+        internal static (Dictionary<int, UnionFindNode>, Dictionary<int, List<UnionFindNode>>) 
             GenerateInitialClusters(int numNodes)
         {
             var graph = new Dictionary<int, UnionFindNode>();

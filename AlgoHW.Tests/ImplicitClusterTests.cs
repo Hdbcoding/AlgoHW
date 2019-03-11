@@ -15,7 +15,8 @@ namespace AlgoHW.Tests
 
             int count = 0;
             var lines = File.ReadLines(inputFile).Skip(1);
-            foreach (var line in lines){
+            foreach (var line in lines)
+            {
                 var value = graph[count];
                 count++;
 
@@ -24,6 +25,15 @@ namespace AlgoHW.Tests
                 Assert.AreEqual(line.Replace(" ", ""), s);
             }
             Assert.AreEqual(count, graph.Count);
+        }
+
+        [Test, TestCaseSource(typeof(TestCaseFactory), "ClusterImplicitCases")]
+        public void CorrectClusterCounts(string inputFile, string outputFile)
+        {
+            (var info, var graph) = ImplicitClusterLoader.LoadData(inputFile);
+            var count = ImplicitClusterLoader.CountClusters(info, graph);
+            var expected = File.ReadLines(outputFile).WhereNotNull().Select(int.Parse).First();
+            Assert.AreEqual(expected, count);
         }
     }
 }
