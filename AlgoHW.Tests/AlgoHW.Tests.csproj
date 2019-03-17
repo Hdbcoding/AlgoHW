@@ -16,6 +16,8 @@
     <ProjectReference Include="..\AlgoHW.PrimMSTLib\AlgoHW.PrimMSTLib.csproj" />
     <ProjectReference Include="..\AlgoHW.ScheduleLib\AlgoHW.ScheduleLib.csproj" />
     <ProjectReference Include="..\AlgoHW.ClusteringLib\AlgoHW.ClusteringLib.csproj" />
+    <ProjectReference Include="..\AlgoHW.HuffmanLib\AlgoHW.HuffmanLib.csproj" />
+    <ProjectReference Include="..\AlgoHW.MWISLib\AlgoHW.MWISLib.csproj" />
   </ItemGroup>
 
   <ItemGroup>
