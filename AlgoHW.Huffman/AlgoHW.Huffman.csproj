@@ -4,6 +4,12 @@
     <ProjectReference Include="..\AlgoHW.HuffmanLib\AlgoHW.HuffmanLib.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="huffmanData.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp2.2</TargetFramework>
