@@ -2,7 +2,7 @@ namespace AlgoHW.HuffmanLib
 {
     public class HuffmanTreeNode
     {
-        public int? TreeWeight => Left?.TreeWeight ?? Left?.Weight ?? 0 + Right?.TreeWeight ?? Right?.Weight ?? 0;
+        public int? TreeWeight { get; set; }
         public int? Id { get; set; }
         public int? Weight { get; set; }
         public HuffmanTreeNode Left { get; set; }
