@@ -42,7 +42,7 @@ namespace AlgoHW.HuffmanLib
             return new HuffmanTreeNode { 
                 Left = node1, 
                 Right = node2,
-                TreeWeight = node1.Weight ?? node1.TreeWeight + node2.Weight ?? node2.TreeWeight
+                TreeWeight = (node1.Weight ?? node1.TreeWeight) + (node2.Weight ?? node2.TreeWeight)
             };
         }
 

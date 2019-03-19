@@ -33,6 +33,17 @@
             "console": "internalConsole",
             "stopAtEntry": false,
             "internalConsoleOptions": "openOnSessionStart"
+        },
+        {
+            "name": "run huffman",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "buildHuffman",
+            "program": "${workspaceFolder}/AlgoHW.Huffman/bin/Debug/netcoreapp2.2/AlgoHW.Huffman.dll",
+            "cwd": "${workspaceFolder}/AlgoHW.Huffman",
+            "console": "internalConsole",
+            "stopAtEntry": false,
+            "internalConsoleOptions": "openOnSessionStart"
         }
     ,]
 }

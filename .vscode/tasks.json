@@ -30,6 +30,16 @@
                 "${workspaceFolder}/AlgoHW.Clustering/AlgoHW.Clustering.csproj"
             ],
             "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "buildHuffman",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/AlgoHW.Huffman/AlgoHW.Huffman.csproj"
+            ],
+            "problemMatcher": "$msCompile"
         }
     ]
 }

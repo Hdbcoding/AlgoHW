@@ -23,8 +23,8 @@ namespace AlgoHW.Tests
             var tree = HuffmanEncoder.CalculateHuffmanCodes(values);
             (var min, var max) = HuffmanEncoder.GetTreeDepths(tree);
             var expected = File.ReadLines(outputFile).WhereNotNull().Select(int.Parse);
-            Assert.AreEqual(expected.First(), max);
-            Assert.AreEqual(expected.Last(), min);
+            Assert.AreEqual(expected.First(), max - 1);
+            Assert.AreEqual(expected.Last(), min - 1);
         }
     }
 }
