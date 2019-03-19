@@ -8,7 +8,7 @@ namespace AlgoHW.Tests
 {
     public class HuffmanTests
     {
-        [Test, TestCaseSource(typeof(TestCaseFactory), "HuffmanCases")]
+        // [Test, TestCaseSource(typeof(TestCaseFactory), "HuffmanCases")]
         public void CanLoadGraphs(string inputFile, string outputFile)
         {
             (var info, var values) = HuffmanEncoder.LoadData(inputFile);
@@ -16,7 +16,7 @@ namespace AlgoHW.Tests
             Assert.AreEqual(count, values.Count + 1);
         }
 
-        [Test, TestCaseSource(typeof(TestCaseFactory), "HuffmanCases")]
+        // [Test, TestCaseSource(typeof(TestCaseFactory), "HuffmanCases")]
         public void CorrectTreeDepth(string inputFile, string outputFile)
         {
             (var info, var values) = HuffmanEncoder.LoadData(inputFile);

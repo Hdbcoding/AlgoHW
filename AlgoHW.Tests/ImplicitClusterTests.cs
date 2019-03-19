@@ -8,7 +8,7 @@ namespace AlgoHW.Tests
 {
     public class ImplicitClusterTests
     {
-        [Test, TestCaseSource(typeof(TestCaseFactory), "ClusterImplicitCases")]
+        // [Test, TestCaseSource(typeof(TestCaseFactory), "ClusterImplicitCases")]
         public void CanLoadGraphs(string inputFile, string outputFile)
         {
             (var info, var graph) = ImplicitClusterLoader.LoadData(inputFile);
@@ -27,7 +27,7 @@ namespace AlgoHW.Tests
             Assert.AreEqual(count, graph.Count);
         }
 
-        [Test, TestCaseSource(typeof(TestCaseFactory), "ClusterImplicitCases")]
+        // [Test, TestCaseSource(typeof(TestCaseFactory), "ClusterImplicitCases")]
         public void CorrectClusterCounts(string inputFile, string outputFile)
         {
             (var info, var graph) = ImplicitClusterLoader.LoadData(inputFile);

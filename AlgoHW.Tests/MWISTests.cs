@@ -9,7 +9,7 @@ namespace AlgoHW.Tests
     public class MWISTests
     {
         [Test, TestCaseSource(typeof(TestCaseFactory), "MWISCases")]
-        public void CorrectTreeDepth(string inputFile, string outputFile)
+        public void CorrectMWIS(string inputFile, string outputFile)
         {
             (var info, var values) = MWISCalculator.LoadData(inputFile);
             var weights = MWISCalculator.CalculateMWISWeights(values);

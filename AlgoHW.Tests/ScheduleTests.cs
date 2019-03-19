@@ -8,7 +8,7 @@ namespace AlgoHW.Tests
 {
     public class ScheduleTests
     {
-        [Test, TestCaseSource(typeof(TestCaseFactory), "ScheduleCases")]
+        // [Test, TestCaseSource(typeof(TestCaseFactory), "ScheduleCases")]
         public void CanLoadJobs(string inputFile, string outputFile)
         {
             (var info, var jobs) = ScheduleLoader.LoadData(inputFile);
@@ -16,7 +16,7 @@ namespace AlgoHW.Tests
             Assert.AreEqual(count, jobs.Count + 1);
         }
 
-        [Test, TestCaseSource(typeof(TestCaseFactory), "ScheduleCases")]
+        // [Test, TestCaseSource(typeof(TestCaseFactory), "ScheduleCases")]
         public void CanCalculateCompletionTimes(string inputFile, string outputFile)        
         {
             var times = ScheduleLoader.CalculateWeightedCompletionTime(inputFile);

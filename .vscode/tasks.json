@@ -40,6 +40,16 @@
                 "${workspaceFolder}/AlgoHW.Huffman/AlgoHW.Huffman.csproj"
             ],
             "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "buildMWIS",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/AlgoHW.MWIS/AlgoHW.MWIS.csproj"
+            ],
+            "problemMatcher": "$msCompile"
         }
     ]
 }

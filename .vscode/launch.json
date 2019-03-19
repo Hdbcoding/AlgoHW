@@ -44,6 +44,17 @@
             "console": "internalConsole",
             "stopAtEntry": false,
             "internalConsoleOptions": "openOnSessionStart"
+        },
+        {
+            "name": "run MWIS",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "buildMWIS",
+            "program": "${workspaceFolder}/AlgoHW.MWIS/bin/Debug/netcoreapp2.2/AlgoHW.MWIS.dll",
+            "cwd": "${workspaceFolder}/AlgoHW.MWIS",
+            "console": "internalConsole",
+            "stopAtEntry": false,
+            "internalConsoleOptions": "openOnSessionStart"
         }
     ,]
 }

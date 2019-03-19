@@ -30,9 +30,9 @@ namespace AlgoHW.MWISLib
             var mwis = new bool[data.Count];
             var i = data.Count - 1;
 
-            while (i >= 1)
+            while (i >= 0)
             {
-                var back1 = memo[i - 1];
+                var back1 = i > 0 ? memo[i - 1] : 0;
                 var back2 = i > 1 ? memo[i - 2] : 0;
                 if (back1 >= back2 + data[i]) i -= 1;
                 else
@@ -40,7 +40,6 @@ namespace AlgoHW.MWISLib
                     mwis[i] = true;
                     i -= 2;
                 }
-                var weight = data[i];
             }
             return mwis;
         }

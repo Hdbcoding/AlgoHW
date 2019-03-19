@@ -8,7 +8,7 @@ namespace AlgoHW.Tests
 {
     public class PrimMSTTests
     {
-        [Test, TestCaseSource(typeof(TestCaseFactory), "PrimMSTCases")]
+        // [Test, TestCaseSource(typeof(TestCaseFactory), "PrimMSTCases")]
         public void CanLoadGraphs(string inputFile, string outputFile)
         {
             (var info, var graph) = MSTLoader.LoadData(inputFile);
@@ -16,7 +16,7 @@ namespace AlgoHW.Tests
             Assert.AreEqual(count, graph.Count + 1);
         }
 
-        [Test, TestCaseSource(typeof(TestCaseFactory), "PrimMSTCases")]
+        // [Test, TestCaseSource(typeof(TestCaseFactory), "PrimMSTCases")]
         public void CanGenerateGraphs(string inputFile, string outputFile)
         {
             (var info, var data) = MSTLoader.LoadData(inputFile);
@@ -24,7 +24,7 @@ namespace AlgoHW.Tests
             Assert.AreEqual(info.Nodes, graph.Count);
         }
 
-        [Test, TestCaseSource(typeof(TestCaseFactory), "PrimMSTCases")]
+        // [Test, TestCaseSource(typeof(TestCaseFactory), "PrimMSTCases")]
         public void CanCalculateMST(string inputFile, string outputFile)
         {
             (var info, var data) = MSTLoader.LoadData(inputFile);
