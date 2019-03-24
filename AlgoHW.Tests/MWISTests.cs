@@ -8,7 +8,7 @@ namespace AlgoHW.Tests
 {
     public class MWISTests
     {
-        [Test, TestCaseSource(typeof(TestCaseFactory), "MWISCases")]
+        // [Test, TestCaseSource(typeof(TestCaseFactory), "MWISCases")]
         public void CorrectMWIS(string inputFile, string outputFile)
         {
             (var info, var values) = MWISCalculator.LoadData(inputFile);
