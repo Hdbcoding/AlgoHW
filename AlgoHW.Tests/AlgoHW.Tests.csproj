@@ -18,6 +18,7 @@
     <ProjectReference Include="..\AlgoHW.ClusteringLib\AlgoHW.ClusteringLib.csproj" />
     <ProjectReference Include="..\AlgoHW.HuffmanLib\AlgoHW.HuffmanLib.csproj" />
     <ProjectReference Include="..\AlgoHW.MWISLib\AlgoHW.MWISLib.csproj" />
+    <ProjectReference Include="..\AlgoHW.KnapsackLib\AlgoHW.KnapsackLib.csproj" />
   </ItemGroup>
 
   <ItemGroup>
