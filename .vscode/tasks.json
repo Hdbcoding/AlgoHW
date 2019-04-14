@@ -50,6 +50,16 @@
                 "${workspaceFolder}/AlgoHW.MWIS/AlgoHW.MWIS.csproj"
             ],
             "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "buildKnapsack",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/AlgoHW.Knapsack/AlgoHW.Knapsack.csproj"
+            ],
+            "problemMatcher": "$msCompile"
         }
     ]
 }

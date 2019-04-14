@@ -55,6 +55,17 @@
             "console": "internalConsole",
             "stopAtEntry": false,
             "internalConsoleOptions": "openOnSessionStart"
+        },
+        {
+            "name": "run Knapsack",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "buildKnapsack",
+            "program": "${workspaceFolder}/AlgoHW.Knapsack/bin/Debug/netcoreapp2.2/AlgoHW.Knapsack.dll",
+            "cwd": "${workspaceFolder}/AlgoHW.Knapsack",
+            "console": "internalConsole",
+            "stopAtEntry": false,
+            "internalConsoleOptions": "openOnSessionStart"
         }
     ,]
 }
