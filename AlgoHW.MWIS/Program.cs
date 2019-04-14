@@ -7,7 +7,7 @@ namespace AlgoHW.MWIS
     {
         static void Main(string[] args)
         {
-            (var info, var values) = MWISCalculator.LoadData("mwisData.txt");
+            (var info, var values) = MWISCalculator.LoadData("mwis_data.txt");
             var weights = MWISCalculator.CalculateMWISWeights(values);
             var mwis = MWISCalculator.ReconstructMWIS(weights, values);
             var answer = MWISCalculator.AnswerQuestion(mwis);

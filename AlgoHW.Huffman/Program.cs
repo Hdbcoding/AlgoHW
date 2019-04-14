@@ -7,7 +7,7 @@ namespace AlgoHW.Huffman
     {
         static void Main(string[] args)
         {
-            (var info, var values) = HuffmanEncoder.LoadData("huffmanData.txt");
+            (var info, var values) = HuffmanEncoder.LoadData("huffman_data.txt");
             var tree = HuffmanEncoder.CalculateHuffmanCodes(values);
             (var min, var max) = HuffmanEncoder.GetTreeDepths(tree);
             Console.WriteLine(max - 1);
