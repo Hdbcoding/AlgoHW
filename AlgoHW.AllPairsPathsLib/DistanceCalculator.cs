@@ -69,7 +69,12 @@ namespace AlgoHW.AllPairsPathsLib
             int?[,,] subProblems = new int?[numNodes, numNodes, 2];
 
             SetupFloydWarshallBaseCases(nodeLabels, graph, numNodes, subProblems);
+            try {
             FillFloydWarshallSubproblems(numNodes, subProblems);
+            }
+            catch{
+                return null;
+            }
 
             if (FloydWarshallNegativeCycle(numNodes, subProblems))
             {
@@ -128,6 +133,8 @@ namespace AlgoHW.AllPairsPathsLib
                         {
                             subProblems[i, j, nextProblem] = differentNodeResult;
                         }
+
+                        if (i == j && subProblems[i, j, nextProblem] < 0) throw new InvalidOperationException("negative cycle!");
                     }
                 }
                 FillSecondIndex = !FillSecondIndex;
