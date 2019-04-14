@@ -66,6 +66,17 @@
             "console": "internalConsole",
             "stopAtEntry": false,
             "internalConsoleOptions": "openOnSessionStart"
+        },
+        {
+            "name": "run AllPairs",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "buildAllPairs",
+            "program": "${workspaceFolder}/AlgoHW.AllPairsPaths/bin/Debug/netcoreapp2.2/AlgoHW.AllPairsPaths.dll",
+            "cwd": "${workspaceFolder}/AlgoHW.AllPairsPaths",
+            "console": "internalConsole",
+            "stopAtEntry": false,
+            "internalConsoleOptions": "openOnSessionStart"
         }
     ,]
 }

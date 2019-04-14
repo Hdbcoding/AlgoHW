@@ -60,6 +60,16 @@
                 "${workspaceFolder}/AlgoHW.Knapsack/AlgoHW.Knapsack.csproj"
             ],
             "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "buildAllPairs",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/AlgoHW.AllPairsPaths/AlgoHW.AllPairsPaths.csproj"
+            ],
+            "problemMatcher": "$msCompile"
         }
     ]
 }
