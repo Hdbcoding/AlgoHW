@@ -1,6 +1,5 @@
 bin
 obj
 .vs
-input*.txt
-output*.txt
+AlgoHW.Tests/*Cases/*.txt
 *_data.txt
