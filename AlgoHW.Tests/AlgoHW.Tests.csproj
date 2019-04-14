@@ -19,6 +19,7 @@
     <ProjectReference Include="..\AlgoHW.HuffmanLib\AlgoHW.HuffmanLib.csproj" />
     <ProjectReference Include="..\AlgoHW.MWISLib\AlgoHW.MWISLib.csproj" />
     <ProjectReference Include="..\AlgoHW.KnapsackLib\AlgoHW.KnapsackLib.csproj" />
+    <ProjectReference Include="..\AlgoHW.AllPairsPathsLib\AlgoHW.AllPairsPathsLib.csproj" />
   </ItemGroup>
 
   <ItemGroup>
