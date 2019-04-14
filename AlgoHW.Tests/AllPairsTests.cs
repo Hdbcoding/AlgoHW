@@ -12,7 +12,7 @@ namespace AlgoHW.Tests
         public void CanLoadGraphs(string inputFile, string outputFile)
         {
             (var info, var data) = DistanceCalculator.LoadData(inputFile);
-            var graph = DistanceCalculator.GenerateGraph(data);
+            (var labels, var graph) = DistanceCalculator.GenerateGraph(data);
             //test data is inconsistent for this requirement apparently
             //Assert.AreEqual(info.Nodes, graph.Count);
             Assert.GreaterOrEqual(info.Nodes, graph.Count);
@@ -21,8 +21,8 @@ namespace AlgoHW.Tests
         [Test, TestCaseSource(typeof(TestCaseFactory), "AllPairsPathsCases")]
         public void FloydWarshall(string inputFile, string outputFile){
             (var info, var data) = DistanceCalculator.LoadData(inputFile);
-            var graph = DistanceCalculator.GenerateGraph(data);
-            var distance = DistanceCalculator.FloydWarshall(graph);
+            (var labels, var graph) = DistanceCalculator.GenerateGraph(data);
+            var distance = DistanceCalculator.FloydWarshall(labels, graph);
             var output = File.ReadAllLines(outputFile).WhereNotNull().First();
             var expected = output == "NULL" ? (int?)null : int.Parse(output);
             Assert.AreEqual(expected, distance);
