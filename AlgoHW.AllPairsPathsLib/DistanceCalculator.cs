@@ -41,16 +41,14 @@ namespace AlgoHW.AllPairsPathsLib
                 }
 
 
-                if (n1.OutgoingEdges.ContainsKey(n2.Id))
+                if (n1.Edges.ContainsKey(n2.Id))
                 {
-                    n1.OutgoingEdges[n2.Id] = Math.Min(n1.OutgoingEdges[n2.Id], edge.Cost);
+                    n1.Edges[n2.Id] = Math.Min(n1.Edges[n2.Id], edge.Cost);
                 }
                 else
                 {
-                    n1.OutgoingEdges.Add(n2.Id, edge.Cost);
+                    n1.Edges.Add(n2.Id, edge.Cost);
                 }
-
-                n2.IncomingEdges.Add(n1.Id);
             }
 
             int[] nodeLabels = graph.Keys.OrderBy(n => n).ToArray();
@@ -93,9 +91,9 @@ namespace AlgoHW.AllPairsPathsLib
                     int ni = nodeLabels[i];
                     int nj = nodeLabels[j];
                     Node node = graph[ni];
-                    if (node.OutgoingEdges.ContainsKey(nj))
+                    if (node.Edges.ContainsKey(nj))
                     {
-                        subProblems[i, j, 0] = node.OutgoingEdges[nj];
+                        subProblems[i, j, 0] = node.Edges[nj];
                     }
                     else if (i == j)
                     {
@@ -175,9 +173,63 @@ namespace AlgoHW.AllPairsPathsLib
             return min;
         }
 
-        public static int? Johnson(Dictionary<int, Node> graph)
+        public static int? Johnson(int[] nodeLabels, Dictionary<int, Node> graph)
         {
+            // add bellman-ford source node
+            // perform bellman-ford traversal from new source node
+            // for each node, set johnsonWeight equal to bellman-ford distance
+            // for each edge of each node, set edge weight equal to EdgeWeight + source.johnsonWeight - dest.johnsonWeight
+            // for each node, perform a dijkstra traversal of the graph
             return null;
+        }
+
+        public static Dictionary<int, int> BellmanFord(int numNodes, int[] nodeLabels, Dictionary<int,Node> graph, int start){
+            var results = new Dictionary<int, int>();
+
+            bool fillSecond = false;
+            var subProblems = new int?[numNodes, 2];
+            subProblems[start, 0] = 0;
+
+            for (int i = 0; i < numNodes + 1; i++)
+            {
+                bool anyChanges = false;
+                int lastProblem = fillSecond ? 0 : 1;
+                int nextProblem = fillSecond ? 1 : 0;
+                for (int v = 0; v < numNodes; v++)
+                {
+                    int? previous = subProblems[v, lastProblem];
+                    int? next = null;
+                    var node = graph[nodeLabels[v]];
+                    foreach (var edge in node.Edges)
+                    {
+                        // todo - get minimum value edge
+                        // Math.min(subProblem[edge.Id, lastProblem] + edge.Length, next)
+                    }
+                    //todo - subproblems[v, nextProblem] = Math.min(previous, next);
+                }
+                // if we still have changes after traversing all nodes, we're spiraling around a negative cycle
+                if (i == numNodes && anyChanges) throw new InvalidOperationException("Negative cycle!");
+                // if there weren't any changes, we have found all minimum paths
+                if (!anyChanges) break;
+                fillSecond = !fillSecond;
+            }
+
+            return results;
+        }
+
+        public static Dictionary<int, int> Djikstra(int[] nodeLabels, Dictionary<int, Node> graph, int start){
+            var results = new Dictionary<int, int>();
+            results.Add(start, 0);
+            // todo - need heap to store outgoing edges from current graph cut
+            // add edges of starting node to heap, with distance = edge length
+            // while results.Length != graph.length
+            //   let {destination, distance} = get min edge from heap
+            //   add {} to results
+            //   remove all outgoing edges from the heap that go to destination
+            //   add all new edges from destination to the heap
+            //      note - heap needs to be sorted by edgeLength + sourceDistance
+
+            return results;
         }
     }
 }

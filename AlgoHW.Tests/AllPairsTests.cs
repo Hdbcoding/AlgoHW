@@ -18,11 +18,21 @@ namespace AlgoHW.Tests
             Assert.GreaterOrEqual(info.Nodes, graph.Count);
         }
 
-        [Test, TestCaseSource(typeof(TestCaseFactory), "AllPairsPathsCases")]
+        // [Test, TestCaseSource(typeof(TestCaseFactory), "AllPairsPathsCases")]
         public void FloydWarshall(string inputFile, string outputFile){
             (var info, var data) = DistanceCalculator.LoadData(inputFile);
             (var labels, var graph) = DistanceCalculator.GenerateGraph(data);
             var distance = DistanceCalculator.FloydWarshall(labels, graph);
+            var output = File.ReadAllLines(outputFile).WhereNotNull().First();
+            var expected = output == "NULL" ? (int?)null : int.Parse(output);
+            Assert.AreEqual(expected, distance);
+        }
+
+        [Test, TestCaseSource(typeof(TestCaseFactory), "AllPairsPathsCases")]
+        public void Johnson(string inputFile, string outputFile){
+            (var info, var data) = DistanceCalculator.LoadData(inputFile);
+            (var labels, var graph) = DistanceCalculator.GenerateGraph(data);
+            var distance = DistanceCalculator.Johnson(labels, graph);
             var output = File.ReadAllLines(outputFile).WhereNotNull().First();
             var expected = output == "NULL" ? (int?)null : int.Parse(output);
             Assert.AreEqual(expected, distance);
