@@ -14,6 +14,7 @@ namespace AlgoHW.Tests
         public static IEnumerable<TestCaseData> MWISCases => EnumerateCases("mwisCases");
         public static IEnumerable<TestCaseData> KnapsackCases => EnumerateCases("knapsackCases");
         public static IEnumerable<TestCaseData> AllPairsPathsCases => EnumerateCases("allPairsPathsCases");
+        public static IEnumerable<TestCaseData> TSP1Cases => EnumerateCases("tsp1Cases");
 
         private static IEnumerable<TestCaseData> EnumerateCases(string directory)
         {
