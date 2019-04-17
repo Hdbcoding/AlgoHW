@@ -20,6 +20,7 @@
     <ProjectReference Include="..\AlgoHW.MWISLib\AlgoHW.MWISLib.csproj" />
     <ProjectReference Include="..\AlgoHW.KnapsackLib\AlgoHW.KnapsackLib.csproj" />
     <ProjectReference Include="..\AlgoHW.AllPairsPathsLib\AlgoHW.AllPairsPathsLib.csproj" />
+    <ProjectReference Include="..\AlgoHW.TSP1Lib\AlgoHW.TSP1Lib.csproj" />
   </ItemGroup>
 
   <ItemGroup>
