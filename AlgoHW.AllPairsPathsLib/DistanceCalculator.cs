@@ -198,7 +198,7 @@ namespace AlgoHW.AllPairsPathsLib
                 for (int v = 0; v < numNodes; v++)
                 {
                     int? previous = subProblems[v, lastProblem];
-                    int? next = null;
+                    // int? next = null;
                     var node = graph[nodeLabels[v]];
                     foreach (var edge in node.Edges)
                     {
