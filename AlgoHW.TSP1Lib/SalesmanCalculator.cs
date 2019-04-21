@@ -27,31 +27,28 @@ namespace AlgoHW.TSP1Lib
             { //size of problem = m + 1
                 foreach (var subset in subsets[m])
                 {
-                    // hey that set dictionary isn't that helpful, I need a map from subproblem to array index
-                    // does it really need to be a map?...
+                    var setIndex = setDictionary[subset];
                     for (int j = 1; j < numCities; j++)
                     {
                         var setWithoutJ = subset & ~(1 << j);
+                        var withoutJIndex = setDictionary[setWithoutJ];
                         int subsetCopy = subset;
                         int k = 0;
-                        int shortestK = 0;
                         float shortest = float.MaxValue;
                         while (subsetCopy > 0)
                         {
-                            if ((subsetCopy & 1) == 1)
+                            if (j != k && (subsetCopy & 1) == 1)
                             {
-                                float distance = subproblems[setWithoutJ, k].GetValueOrDefault() + Distance(distances, j, k);
+                                float distance = subproblems[withoutJIndex, k].GetValueOrDefault() + Distance(distances, j, k);
                                 if (distance < shortest)
                                 {
                                     shortest = distance;
-                                    shortestK = k;
                                 }
                             }
-                            subsetCopy <<= 1;
+                            subsetCopy >>= 1;
                             k++;
                         }
-                        // false, need a dictionary!
-                        subproblems[subset, j] = shortest;
+                        subproblems[setIndex, j] = shortest;
                     }
                 }
             }
@@ -65,7 +62,7 @@ namespace AlgoHW.TSP1Lib
             return (int)shortestCircuit;
         }
 
-        public static (List<List<int>>, Dictionary<int, (int, int)>) EnumerateSubsets(int numCities)
+        public static (List<List<int>>, Dictionary<int, int>) EnumerateSubsets(int numCities)
         {
             var total = (int)Math.Pow(2, numCities);
             var sets = new List<List<int>>(numCities);
@@ -80,13 +77,14 @@ namespace AlgoHW.TSP1Lib
                 else sets[numBits - 1].Add(i);
             }
 
-            var set = new Dictionary<int, (int, int)>();
+            var set = new Dictionary<int, int>();
+            var index = 0;
             for (int i = 0; i < sets.Count; i++)
             {
                 var list = sets[i];
                 for (int j = 0; j < list.Count; j++)
                 {
-                    set.Add(list[j], (i, j));
+                    set.Add(list[j], index++);
                 }
             }
 
