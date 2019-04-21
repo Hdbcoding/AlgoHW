@@ -14,6 +14,12 @@ namespace AlgoHW.Tests
             Assert.AreEqual(num, data.Count);
         }
 
+        [Test, TestCaseSource(typeof(TestCaseFactory), "TSP1Cases")]
+        public void CanEvaluateDistances(string inputFile, string outputFile){
+            (var num, var data) = SalesmanCalculator.LoadData(inputFile);
+            var distances = SalesmanCalculator.EnumerateDistances(data);
+        }
+
         [Test]
         public void EnumerateSets()
         {

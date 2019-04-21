@@ -14,6 +14,10 @@ namespace AlgoHW.TSP1Lib
 
         public static int ShortestCircuit(int numCities, List<City> cities)
         {
+            if (numCities <= 1) return 0;
+            if (numCities == 2) return (int)(Distance(cities[0], cities[1]) * 2);
+            if (numCities == 3) return (int)(Distance(cities[0], cities[1]) + Distance(cities[1], cities[2]) + Distance(cities[0], cities[2]));
+
             (var subsets, var setDictionary) = EnumerateSubsets(numCities);
             var distances = EnumerateDistances(cities);
             var subproblems = new float?[setDictionary.Count, numCities];
@@ -53,7 +57,8 @@ namespace AlgoHW.TSP1Lib
             }
 
             float shortestCircuit = float.MaxValue;
-            for (int j = 1; j < numCities; j++){
+            for (int j = 1; j < numCities; j++)
+            {
                 float distance = subproblems[setDictionary.Count - 1, j].GetValueOrDefault() + Distance(distances, j, 0);
                 shortestCircuit = Math.Min(shortestCircuit, distance);
             }
@@ -105,7 +110,7 @@ namespace AlgoHW.TSP1Lib
             for (int i = 0; i < cities.Count - 1; i++)
             {
                 var ci = cities[i];
-                for (int j = 1; j < cities.Count; j++)
+                for (int j = i + 1; j < cities.Count; j++)
                 {
                     var cj = cities[j];
                     var key = (1 << i) | (1 << j);
