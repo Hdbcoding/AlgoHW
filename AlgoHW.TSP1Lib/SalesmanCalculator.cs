@@ -15,11 +15,51 @@ namespace AlgoHW.TSP1Lib
         public static int ShortestCircuit(int numCities, List<City> cities)
         {
             (var subsets, var setDictionary) = EnumerateSubsets(numCities);
-            var subproblems = new int[setDictionary.Count, numCities];
-            return 0;
+            var distances = EnumerateDistances(cities);
+            var subproblems = new float?[setDictionary.Count, numCities];
+            subproblems[1, 0] = 0;
+
+            for (int m = 1; m < numCities; m++)
+            { //size of problem = m + 1
+                foreach (var subset in subsets[m])
+                {
+                    // hey that set dictionary isn't that helpful, I need a map from subproblem to array index
+                    // does it really need to be a map?...
+                    for (int j = 1; j < numCities; j++)
+                    {
+                        var setWithoutJ = subset & ~(1 << j);
+                        int subsetCopy = subset;
+                        int k = 0;
+                        int shortestK = 0;
+                        float shortest = float.MaxValue;
+                        while (subsetCopy > 0)
+                        {
+                            if ((subsetCopy & 1) == 1)
+                            {
+                                float distance = subproblems[setWithoutJ, k].GetValueOrDefault() + Distance(distances, j, k);
+                                if (distance < shortest)
+                                {
+                                    shortest = distance;
+                                    shortestK = k;
+                                }
+                            }
+                            subsetCopy <<= 1;
+                            k++;
+                        }
+                        subproblems[subset, j] = shortest;
+                    }
+                }
+            }
+            
+            float shortestCircuit = float.MaxValue;
+            for (int j = 1; j < numCities; j++){
+                float distance = subproblems[setDictionary.Count - 1, j].GetValueOrDefault() + Distance(distances, j, 0);
+                shortestCircuit = Math.Min(shortestCircuit, distance);
+            }
+            return (int)shortestCircuit;
         }
 
-        public static (List<List<int>>, Dictionary<int, (int,int)>) EnumerateSubsets(int numCities)
+        public static (List<List<int>>, Dictionary<int, (int, int)>) EnumerateSubsets(int numCities)
         {
             var total = (int)Math.Pow(2, numCities);
             var sets = new List<List<int>>(numCities);
@@ -35,9 +75,11 @@ namespace AlgoHW.TSP1Lib
             }
 
             var set = new Dictionary<int, (int, int)>();
-            for (int i = 0; i < sets.Count; i++){
+            for (int i = 0; i < sets.Count; i++)
+            {
                 var list = sets[i];
-                for (int j = 0; j < list.Count; j++){
+                for (int j = 0; j < list.Count; j++)
+                {
                     set.Add(list[j], (i, j));
                 }
             }
@@ -54,6 +96,35 @@ namespace AlgoHW.TSP1Lib
                 i >>= 1;
             }
             return count;
+        }
+
+        public static Dictionary<int, float> EnumerateDistances(List<City> cities)
+        {
+            var distances = new Dictionary<int, float>();
+            for (int i = 0; i < cities.Count - 1; i++)
+            {
+                var ci = cities[i];
+                for (int j = 1; j < cities.Count; j++)
+                {
+                    var cj = cities[j];
+                    var key = (1 << i) | (1 << j);
+                    distances.Add(key, Distance(ci, cj));
+                }
+            }
+            return distances;
+        }
+
+        private static float Distance(City ci, City cj)
+        {
+            var dx = ci.X - cj.X;
+            var dy = ci.Y - cj.Y;
+            return (float)Math.Sqrt(dx * dx + dy * dy);
+        }
+
+        private static float Distance(Dictionary<int, float> distances, int j, int k)
+        {
+            var key = (1 << j) | (1 << k);
+            return distances[key];
         }
     }
 }
