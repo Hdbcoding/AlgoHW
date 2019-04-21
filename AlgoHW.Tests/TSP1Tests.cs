@@ -35,8 +35,9 @@ namespace AlgoHW.Tests
         [Test]
         public void EnumerateSets()
         {
-            (var subsets, var setDictionary) = SalesmanCalculator.EnumerateSubsets(24);
-            Console.WriteLine(setDictionary.Count);
+            var subsets = SalesmanCalculator.EnumerateSubsets(24);
+            Console.WriteLine(subsets.Count);
+            foreach (var set in subsets) Console.WriteLine(set.Count);
         }
     }
 }

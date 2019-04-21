@@ -18,24 +18,29 @@ namespace AlgoHW.TSP1Lib
             if (numCities == 2) return (int)(Distance(cities[0], cities[1]) * 2);
             if (numCities == 3) return (int)(Distance(cities[0], cities[1]) + Distance(cities[1], cities[2]) + Distance(cities[0], cities[2]));
 
-            (var subsets, var setDictionary) = EnumerateSubsets(numCities);
+            var subsets = EnumerateSubsets(numCities);
             var distances = EnumerateDistances(cities);
-            var subproblems = new float?[setDictionary.Count, numCities];
-            subproblems[0, 0] = 0;
-            Console.WriteLine("num subsets total: " + setDictionary.Count);
+            // note: treat null as infinity
+            var oldProblems = new float?[subsets[0].Count, numCities];
+            oldProblems[0, 0] = 0;
+            var oldDict = new Dictionary<int, int>();
+            oldDict.Add(1, 0);
             for (int m = 1; m < numCities; m++)
             { //size of problem = m + 1
                 var start = DateTime.Now;
                 var sizeMSets = subsets[m];
+                var newProblems = new float?[sizeMSets.Count, numCities];
+                var newDict = new Dictionary<int, int>();
                 Console.WriteLine((m + 1) + ": num subsets: " + sizeMSets.Count);
                 for (int s = 0; s < sizeMSets.Count; s++)
                 {
                     var subset = sizeMSets[s];
-                    var setIndex = setDictionary[subset];
+                    newDict.Add(subset, s);
                     for (int j = 1; j < numCities; j++)
                     {
+                        if ((subset & (1 << j)) == 0) continue;
                         var setWithoutJ = subset & ~(1 << j);
-                        var withoutJIndex = setDictionary[setWithoutJ];
+                        var withoutJIndex = oldDict[setWithoutJ];
                         int subsetCopy = subset;
                         int k = 0;
                         float shortest = float.MaxValue;
@@ -43,7 +48,7 @@ namespace AlgoHW.TSP1Lib
                         {
                             if (j != k && (subsetCopy & 1) == 1)
                             {
-                                float? distance = subproblems[withoutJIndex, k] + Distance(distances, j, k);
+                                float? distance = oldProblems[withoutJIndex, k] + Distance(distances, j, k);
                                 if (distance < shortest)
                                 {
                                     shortest = distance.Value;
@@ -52,25 +57,27 @@ namespace AlgoHW.TSP1Lib
                             subsetCopy >>= 1;
                             k++;
                         }
-                        subproblems[setIndex, j] = shortest;
+                        newProblems[s, j] = shortest;
                     }
                 }
                 var elapsed = DateTime.Now.Ticks - start.Ticks;
                 Console.WriteLine((m + 1) + ": elapsed: " + elapsed / 10000 + "ms");
 
                 subsets[m - 1] = null;
+                oldProblems = newProblems;
+                oldDict = newDict;
             }
 
             float shortestCircuit = float.MaxValue;
             for (int j = 1; j < numCities; j++)
             {
-                float distance = subproblems[setDictionary.Count - 1, j].GetValueOrDefault() + Distance(distances, j, 0);
+                float distance = oldProblems[0, j].GetValueOrDefault() + Distance(distances, j, 0);
                 shortestCircuit = Math.Min(shortestCircuit, distance);
             }
             return (int)shortestCircuit;
         }
 
-        public static (List<List<int>>, Dictionary<int, int>) EnumerateSubsets(int numCities)
+        public static List<List<int>> EnumerateSubsets(int numCities)
         {
             var total = (int)Math.Pow(2, numCities);
             var sets = new List<List<int>>(numCities);
@@ -85,18 +92,7 @@ namespace AlgoHW.TSP1Lib
                 else sets[numBits - 1].Add(i);
             }
 
-            var set = new Dictionary<int, int>();
-            var index = 0;
-            for (int i = 0; i < sets.Count; i++)
-            {
-                var list = sets[i];
-                for (int j = 0; j < list.Count; j++)
-                {
-                    set.Add(list[j], index++);
-                }
-            }
-
-            return (sets, set);
+            return sets;
         }
 
         private static int CountBits(int i)
