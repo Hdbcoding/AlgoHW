@@ -21,7 +21,7 @@ namespace AlgoHW.TSP1Lib
             (var subsets, var setDictionary) = EnumerateSubsets(numCities);
             var distances = EnumerateDistances(cities);
             var subproblems = new float?[setDictionary.Count, numCities];
-            subproblems[1, 0] = 0;
+            subproblems[0, 0] = 0;
 
             for (int m = 1; m < numCities; m++)
             { //size of problem = m + 1
@@ -39,10 +39,10 @@ namespace AlgoHW.TSP1Lib
                         {
                             if (j != k && (subsetCopy & 1) == 1)
                             {
-                                float distance = subproblems[withoutJIndex, k].GetValueOrDefault() + Distance(distances, j, k);
+                                float? distance = subproblems[withoutJIndex, k] + Distance(distances, j, k);
                                 if (distance < shortest)
                                 {
-                                    shortest = distance;
+                                    shortest = distance.Value;
                                 }
                             }
                             subsetCopy >>= 1;
