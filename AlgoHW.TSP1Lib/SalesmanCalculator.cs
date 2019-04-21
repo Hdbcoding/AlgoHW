@@ -46,11 +46,12 @@ namespace AlgoHW.TSP1Lib
                             subsetCopy <<= 1;
                             k++;
                         }
+                        // false, need a dictionary!
                         subproblems[subset, j] = shortest;
                     }
                 }
             }
-            
+
             float shortestCircuit = float.MaxValue;
             for (int j = 1; j < numCities; j++){
                 float distance = subproblems[setDictionary.Count - 1, j].GetValueOrDefault() + Distance(distances, j, 0);
