@@ -77,6 +77,17 @@
             "console": "internalConsole",
             "stopAtEntry": false,
             "internalConsoleOptions": "openOnSessionStart"
+        },
+        {
+            "name": "run TSP1",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "buildTSP1",
+            "program": "${workspaceFolder}/AlgoHW.TSP1/bin/Debug/netcoreapp2.2/AlgoHW.TSP1.dll",
+            "cwd": "${workspaceFolder}/AlgoHW.TSP1",
+            "console": "internalConsole",
+            "stopAtEntry": false,
+            "internalConsoleOptions": "openOnSessionStart"
         }
     ,]
 }

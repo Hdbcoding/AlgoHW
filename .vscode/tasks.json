@@ -70,6 +70,16 @@
                 "${workspaceFolder}/AlgoHW.AllPairsPaths/AlgoHW.AllPairsPaths.csproj"
             ],
             "problemMatcher": "$msCompile"
+        },
+        {
+            "label": "buildTSP1",
+            "command": "dotnet",
+            "type": "process",
+            "args": [
+                "build",
+                "${workspaceFolder}/AlgoHW.TSP1/AlgoHW.TSP1.csproj"
+            ],
+            "problemMatcher": "$msCompile"
         }
     ]
 }

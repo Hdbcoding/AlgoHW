@@ -22,11 +22,15 @@ namespace AlgoHW.TSP1Lib
             var distances = EnumerateDistances(cities);
             var subproblems = new float?[setDictionary.Count, numCities];
             subproblems[0, 0] = 0;
-
+            Console.WriteLine("num subsets total: " + setDictionary.Count);
             for (int m = 1; m < numCities; m++)
             { //size of problem = m + 1
-                foreach (var subset in subsets[m])
+                var start = DateTime.Now;
+                var sizeMSets = subsets[m];
+                Console.WriteLine((m + 1) + ": num subsets: " + sizeMSets.Count);
+                for (int s = 0; s < sizeMSets.Count; s++)
                 {
+                    var subset = sizeMSets[s];
                     var setIndex = setDictionary[subset];
                     for (int j = 1; j < numCities; j++)
                     {
@@ -51,6 +55,10 @@ namespace AlgoHW.TSP1Lib
                         subproblems[setIndex, j] = shortest;
                     }
                 }
+                var elapsed = DateTime.Now.Ticks - start.Ticks;
+                Console.WriteLine((m + 1) + ": elapsed: " + elapsed / 10000 + "ms");
+
+                subsets[m - 1] = null;
             }
 
             float shortestCircuit = float.MaxValue;
