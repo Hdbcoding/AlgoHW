@@ -7,8 +7,8 @@ namespace AlgoHW.TSP2Lib
     public class City
     {
         public int Id { get; set; }
-        public float X { get; set; }
-        public float Y { get; set; }
+        public double X { get; set; }
+        public double Y { get; set; }
 
         internal static City FromString(string s)
         {
@@ -16,8 +16,8 @@ namespace AlgoHW.TSP2Lib
             return new City
             {
                 Id = int.Parse(data.First()),
-                X = float.Parse(data.Skip(1).First()),
-                Y = float.Parse(data.Last())
+                X = double.Parse(data.Skip(1).First()),
+                Y = double.Parse(data.Last())
             };
         }
     }

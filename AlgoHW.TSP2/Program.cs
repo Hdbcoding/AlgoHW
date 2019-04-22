@@ -1,4 +1,5 @@
 ﻿using System;
+using AlgoHW.TSP2Lib;
 
 namespace AlgoHW.TSP2
 {
@@ -6,7 +7,10 @@ namespace AlgoHW.TSP2
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            (var num, var data) = SalesmanCalculator2.LoadData("tsp2_data.txt");
+            Console.WriteLine("Data loaded");
+            var distance = SalesmanCalculator2.ShortestCircuit(num, data);
+            Console.WriteLine(distance);
         }
     }
 }
